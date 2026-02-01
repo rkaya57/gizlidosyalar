@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dossier Access Node</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="scanlines"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="sigil">◼︎</div>
+      <div>
+        <div class="brandTitle">DOSSİER ACCESS NODE</div>
+        <div class="brandSub">CONFIDENTIAL / EYES ONLY</div>
+      </div>
+    </div>
+    <div class="status">
+      <span class="pill" id="clock">--:--</span>
+      <span class="pill danger" id="securityState">SECURITY: ARMED</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- LOGIN -->
+    <section class="panel" id="loginView" aria-label="Giriş Paneli">
+      <div class="panelHeader">
+        <h1>Giriş Paneli</h1>
+        <p class="muted">Yetkisiz erişim kaydedilir. Kimlik doğrulama zorunludur.</p>
+      </div>
+
+      <div class="grid2">
+        <!-- PERSONNEL INFO (FIXED) -->
+        <div class="card">
+          <div class="cardTitle">PERSONEL PROFİLİ</div>
+
+          <div class="idcard">
+            <div class="idPhoto">
+              <img src="images/saban-baskok.jpg" alt="Şaban Başkök" />
+              <div class="stamp">AUTHORIZED</div>
+            </div>
+
+            <div class="idInfo">
+              <div class="idLine"><span class="k">Ad</span><span class="v" id="pName">Şaban Başkök</span></div>
+              <div class="idLine"><span class="k">Görev</span><span class="v" id="pJob">Özel Güvenlik Görevlisi</span></div>
+              <div class="idLine"><span class="k">Konum</span><span class="v" id="pLoc">Sinop / Erfelek</span></div>
+              <div class="idLine"><span class="k">Seviye</span><span class="v">ALFA-3</span></div>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminalTitle">SYSTEM LOG</div>
+            <pre id="sysLog">[BOOT] node initialized…
+[AUDIT] voice agent ready…
+[NOTICE] enter credentials…</pre>
+          </div>
+        </div>
+
+        <!-- CREDENTIALS -->
+        <div class="card">
+          <div class="cardTitle">KİMLİK DOĞRULAMA</div>
+
+          <label class="label">Kullanıcı Adı</label>
+          <input class="input" id="username" placeholder="Kullanıcı adı" autocomplete="username" />
+
+          <label class="label">Şifre</label>
+          <input class="input" id="password" type="password" placeholder="Şifre" autocomplete="current-password" />
+
+          <div class="row">
+            <button class="btn primary" id="loginBtn">Giriş Yap</button>
+            <button class="btn" id="speakBtn" title="Botu tekrar konuştur">🔊 Bot</button>
+          </div>
+
+          <p class="muted small">
+            PDF ekleme yetkisi yoktur. Sadece görüntüleme modundasınız.
+          </p>
+
+          <div class="hint">
+            <span class="badge">UYARI</span>
+            <span>Bu terminalde yapılan her işlem kayıt altına alınır.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section class="panel hidden" id="dashView" aria-label="Dosyalar">
+      <div class="panelHeader">
+        <h1>Dosya Arşivi</h1>
+        <p class="muted"><span class="badge">EYES ONLY</span> Sadece görüntüleme izni.</p>
+      </div>
+
+      <div class="dash">
+        <aside class="card">
+          <div class="cardTitle">DOSYALAR</div>
+          <div class="list" id="fileList"></div>
+
+          <div class="row space">
+            <div class="userchip" id="userChip"></div>
+            <button class="btn danger" id="logoutBtn">Çıkış</button>
+          </div>
+        </aside>
+
+        <section class="card viewer">
+          <div class="cardTitle">GÖRÜNTÜLEYİCİ</div>
+
+          <div class="viewerMeta" id="viewerMeta">
+            <span class="badge">DOSYA</span>
+            <span class="muted">Bir PDF seçiniz…</span>
+          </div>
+
+          <div class="viewerFrame">
+            <iframe id="pdfFrame" title="PDF Viewer" src=""></iframe>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="files.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
